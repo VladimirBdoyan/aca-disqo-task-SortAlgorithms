@@ -1,19 +1,22 @@
-package com.company;
+package com.company.util;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Vladimir
- * Date: 10.07.2021.
- * Time: 10:38.
+ * Date: 12.07.2021.
+ * Time: 18:00.
  */
-public class QuickSort {
+public class SortingUtil {
+    private SortingUtil() {
+    }
+
     private static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
     }
 
-    protected void quickSort(int[] arr, int leftBorder, int rightBorder) {
+    public static void quickSort(int[] arr, int leftBorder, int rightBorder) {
         int left = leftBorder; // left increment
         int right = rightBorder; // right increment
         int pivot = arr[(left + right) / 2]; // support element by which can find smaller and bigger element than that
@@ -46,7 +49,22 @@ public class QuickSort {
         // if pivot is every time will be bigger or lesser element in the array
     }
 
-    void printArray(int arr[]) {
+    // Function to sort array using insertion sort
+    public static void insertionsort(int array[]) {
+        int length = array.length;
+        for (int i = 1; i < length; i++) {
+            int key = array[i]; // Key is that element whose must compare another elements from unsorted array
+            int j = i - 1; // J is index who moves in Array right to left and check is greater than key , and change the index greater element to smaller
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j]; // if true in array[i] index  element changed by array{i-1] index element
+                j--;
+            }
+            array[j + 1] = key; // array[i-1] index element's changed by smaller key , because array[i-1] > array[i] and key = array[i]
+        }
+    }
+
+    // Time Complexity O(n^2) , if array already Sorted in the opposite direction then Time Complexity is the worst
+    public static void printArray(int arr[]) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
