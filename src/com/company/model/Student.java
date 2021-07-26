@@ -28,12 +28,6 @@ public class Student implements Comparable<Student> {
         }
         return 0;
     }
-    public int compareToGender(Student o) {
-        if (o.gender.code == 1) {
-            return 1;
-        }
-        return 2;
-    }
 
     @Override
     public String toString() {
